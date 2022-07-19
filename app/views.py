@@ -1,6 +1,6 @@
 from app import app
 
-@app.route('/')
-@app.route('/index')
+@app.views('/')
+@app.views('/index')
 def index():
-    return "Hello, World!"
+    return "<h1>Hello, World!</h1>"
