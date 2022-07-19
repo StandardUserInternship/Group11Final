@@ -9,4 +9,3 @@ from app import views
 #load the config file
 
 app.config.from_object('config')
-
