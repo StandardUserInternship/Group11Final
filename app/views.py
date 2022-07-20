@@ -1,13 +1,24 @@
 from app import app
+from flask import render_template
+
+
 
 
 @app.route('/')
 @app.route('/index')
-
-
-
-def index():  # sourcery skip: remove-unreachable-code
-    return "<h1>Hello, World!</h1>"
+def index():
+    user = {'username': 'Miguel'}
+    posts = [
+        {
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
+        }
+    ]
+    return render_template('index.html', title='Home', user=user, posts=posts)
 
 
 
