@@ -4,7 +4,7 @@ from flask import Flask
 
 app = Flask(__name__, instance_relative_config=True)
 
-from app import views
+from Group11Final.graph_app import views
 
 #load the config file
 
