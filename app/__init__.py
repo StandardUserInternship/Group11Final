@@ -1,4 +1,5 @@
 from flask import Flask
+import os
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -17,4 +18,7 @@ from app import views, models
 
 
 
+#load the config file
+app.config['SECRET_KEY'] = 'you-will-never-guess'
+#app.config.from_object('config')
 
