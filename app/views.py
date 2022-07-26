@@ -12,7 +12,6 @@ from werkzeug.urls import url_parse
 
 @app.route('/')
 @app.route('/index')
-@login_required
 def index():
     user = {'username': 'Anthony'}
     posts = [
@@ -48,3 +47,14 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/graph')
+def graph():
+    import pandas
+    m_survived = 0
+    pandas.set_option('display.max_rows', None)
+    filename = 'titanic.csv'
+    df = pandas.read_csv(filename, usecols=['Survived', 'Sex'])
+    survived = df['Survived'].sum()
+    sunken = 892 - survived
+    return render_template('graph.html', sunken=sunken, survived=survived)
