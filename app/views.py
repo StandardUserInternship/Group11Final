@@ -14,16 +14,6 @@ from werkzeug.urls import url_parse
 @app.route('/index')
 def index():
     user = {'username': 'Anthony'}
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
     return render_template('index.html', title='Home', user=user)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -50,11 +40,5 @@ def logout():
 
 @app.route('/graph')
 def graph():
-    import pandas
-    m_survived = 0
-    pandas.set_option('display.max_rows', None)
-    filename = 'titanic.csv'
-    df = pandas.read_csv(filename, usecols=['Survived', 'Sex'])
-    survived = df['Survived'].sum()
-    sunken = 892 - survived
-    return render_template('graph.html', sunken=sunken, survived=survived)
+    return render_template('graph.html')
+    
